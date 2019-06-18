@@ -1,13 +1,15 @@
 {
-    "preset": [
-        "env",
-        {
-            "target":{
-                "browsers":[
-                    "last 5 versions",
-                    "ie >=8"
-                ]
+    "presets": [
+        [
+            "env",
+            {
+                "target": {
+                    "browsers": [
+                        "last 5 versions",
+                        "ie >=8"
+                    ]
+                }
             }
-        }
+        ]
     ]
 }
