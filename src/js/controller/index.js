@@ -1,7 +1,12 @@
 // Global app controller
-import x from '../models/Search';
-import {add, mutli} from '../views/searchView';
+import Search from '../models/Search';
+import * as searchView from '../views/searchView';
 
+// global state of the app
+const state = {
+        
+}
 
-console.log(add(10,10));
-console.log(mutli(10,10));
+const search = new Search('pizza');
+search.getResults();
+console.log(search);
