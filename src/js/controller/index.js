@@ -1,22 +1,29 @@
 // Global app controller
 import Search from '../models/Search';
-import * as constants from '../constants'
+import {
+    elements
+} from '../views/base'
 import * as searchView from '../views/searchView';
 
 // global state of the app
 const state = {};
 
 const controlSearch = async () => {
-    const query = "pizza";
+    const query = searchView.getInput();
+    console.log(`you wrote ${query}`);
+
     if (query) {
         state.search = new Search(query);
+        searchView.clearInput();
+        searchView.clearHtml();
         await state.search.getResults();
-        console.log(state.search);
+        console.log(state.search.result);
+        searchView.renderResults(state.search.result);
     }
-    
+
 }
 
-document.querySelector('.search').addEventListener('submit', e => {
+elements.searchForm.addEventListener('submit', e => {
     e.preventDefault();
     controlSearch();
 });
