@@ -2,6 +2,7 @@
 import Search from '../models/Search';
 import {
     elements,
+    htmlTagNames,
     renderSpinnerLoader,
     clearRenderSpinnerLoader
 } from '../views/base'
@@ -16,11 +17,11 @@ const controlSearch = async () => {
 
     if (query) {
         state.search = new Search(query);
-       
+
         renderSpinnerLoader(elements.searchResults);
         searchView.clearInput();
         searchView.clearHtml();
-       
+
         await state.search.getResults();
 
         clearRenderSpinnerLoader();
@@ -33,4 +34,16 @@ const controlSearch = async () => {
 elements.searchForm.addEventListener('submit', e => {
     e.preventDefault();
     controlSearch();
+});
+
+elements.resultPagination.addEventListener('click', e => {
+    const btn = e.target.closest(htmlTagNames.btnInline)
+    console.log(btn);
+    if(btn){
+        const gotoPage= parseInt(btn.dataset.goto, 10);
+        searchView.clearHtml();
+         
+        searchView.renderResults(state.search.result, gotoPage);
+        console.log(gotoPage);
+    }
 });

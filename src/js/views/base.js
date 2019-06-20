@@ -3,7 +3,9 @@ export const htmlTagNames = {
     searchForm: '.search',
     searchResultList: '.results__list',
     searchResult: '.results',
-    loader:'loader'
+    loader:'loader',
+    resultPagination:'.results__pages',
+    btnInline:'.btn-inline'
 
 };
 
@@ -16,9 +18,9 @@ export const elements = {
     searchInput: document.querySelector(htmlTagNames.searchField),
     searchForm: document.querySelector(htmlTagNames.searchForm),
     searchResultList: document.querySelector(htmlTagNames.searchResultList),
-    searchResults: document.querySelector(htmlTagNames.searchResult)
+    searchResults: document.querySelector(htmlTagNames.searchResult),
+    resultPagination:document.querySelector(htmlTagNames.resultPagination)
 };
-
 
 export const renderSpinnerLoader = parent => {
     const loader = `
