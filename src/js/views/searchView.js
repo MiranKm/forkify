@@ -7,11 +7,25 @@ export const getInput = () => {
 }
 
 export const clearInput = () => {
-     elements.searchInput.value = "";
+    elements.searchInput.value = "";
 };
 
+const limitRecipeTitle = (title, limit = 17) => {
+    const titleHolder=[];
+    if (title.length > limit) {
+        title.split(' ').reduce((acc, currrent) => {
+            if(acc + currrent.length >= limit){
+                titleHolder.push(currrent);
+            }
+            return acc+ currrent.length;
+        }, 0);
+        return `${titleHolder.join(" ")} ...`;
+    }
+    return title;
+}
+
 export const clearHtml = () => {
-     elements.searchResultList.innerHTML = "";
+    elements.searchResultList.innerHTML = "";
 };
 
 const renderRecipe = recipe => {
@@ -19,7 +33,7 @@ const renderRecipe = recipe => {
     <li>
         <a class="results__link " href="${recipe.recipe_id}">
             <figure class="results__fig">
-                <img src="${recipe.image_url}" alt="${recipe.title}">
+                <img src="${recipe.image_url}" alt="${limitRecipeTitle(recipe.title)}">
             </figure>
             <div class="results__data">
                 <h4 class="results__name">${recipe.title}</h4>
