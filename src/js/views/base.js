@@ -1,8 +1,10 @@
-
 export const htmlTagNames = {
     searchField: '.search__field',
     searchForm: '.search',
-    searchResultList:'.results__list'
+    searchResultList: '.results__list',
+    searchResult: '.results',
+    loader:'loader'
+
 };
 
 export const constants = {
@@ -13,9 +15,23 @@ export const constants = {
 export const elements = {
     searchInput: document.querySelector(htmlTagNames.searchField),
     searchForm: document.querySelector(htmlTagNames.searchForm),
-    searchResultList: document.querySelector(htmlTagNames.searchResultList)
+    searchResultList: document.querySelector(htmlTagNames.searchResultList),
+    searchResults: document.querySelector(htmlTagNames.searchResult)
 };
 
 
+export const renderSpinnerLoader = parent => {
+    const loader = `
+    <div class="${htmlTagNames.loader}">
+        <svg>
+            <use href="img/icons.svg#icon-cw"></use>
+        </svg>
+    </div>
+    `;
+    parent.insertAdjacentHTML('afterbegin', loader);
+}
 
-// 
+export const clearRenderSpinnerLoader = () => {
+    const loader= document.querySelector(`.${htmlTagNames.loader}`);
+    if(loader) loader.parentElement.removeChild(loader);
+}

@@ -11,13 +11,13 @@ export const clearInput = () => {
 };
 
 const limitRecipeTitle = (title, limit = 17) => {
-    const titleHolder=[];
+    const titleHolder = [];
     if (title.length > limit) {
         title.split(' ').reduce((acc, currrent) => {
-            if(acc + currrent.length >= limit){
+            if (acc + currrent.length >= limit) {
                 titleHolder.push(currrent);
             }
-            return acc+ currrent.length;
+            return acc + currrent.length;
         }, 0);
         return `${titleHolder.join(" ")} ...`;
     }
@@ -44,6 +44,9 @@ const renderRecipe = recipe => {
     elements.searchResultList.insertAdjacentHTML('beforeend', markUp);
 
 }
-export const renderResults = recipes => {
+export const renderResults = (recipes, page = 1, resPerPage = 10) => {
+    const start = 1;
+    const end = 10;
+    
     recipes.forEach(renderRecipe);
 }

@@ -1,7 +1,9 @@
 // Global app controller
 import Search from '../models/Search';
 import {
-    elements
+    elements,
+    renderSpinnerLoader,
+    clearRenderSpinnerLoader
 } from '../views/base'
 import * as searchView from '../views/searchView';
 
@@ -14,11 +16,16 @@ const controlSearch = async () => {
 
     if (query) {
         state.search = new Search(query);
+       
+        renderSpinnerLoader(elements.searchResults);
         searchView.clearInput();
         searchView.clearHtml();
+       
         await state.search.getResults();
-        console.log(state.search.result);
+
+        clearRenderSpinnerLoader();
         searchView.renderResults(state.search.result);
+
     }
 
 }
