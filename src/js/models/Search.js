@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {constants} from '../views/base'
+import {constants} from '../base'
 
 
 export default class Search {
@@ -8,7 +8,7 @@ export default class Search {
     }
     async getResults() {
         try {
-            const res = await axios(`${constants.baseApiLink}${constants.API_KEY}&q=${this.query}`);
+            const res = await axios(`${constants.baseApiLinkSearch}${constants.API_KEY}&q=${this.query}`);
             this.result = res.data.recipes
         } catch (error) {
             console.log(error);

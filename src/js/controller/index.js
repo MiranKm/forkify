@@ -1,11 +1,12 @@
 // Global app controller
 import Search from '../models/Search';
+import Recipe from '../models/Recipe';
 import {
     elements,
     htmlTagNames,
     renderSpinnerLoader,
     clearRenderSpinnerLoader
-} from '../views/base'
+} from '../base'
 import * as searchView from '../views/searchView';
 
 // global state of the app
@@ -47,3 +48,7 @@ elements.resultPagination.addEventListener('click', e => {
         console.log(gotoPage);
     }
 });
+
+const recipe= new Recipe(46956);
+recipe.getRecipe();
+console.log(recipe);

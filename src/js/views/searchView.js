@@ -1,7 +1,7 @@
 import {
     elements,
     htmlTagNames
-} from './base';
+} from '../base';
 
 export const getInput = () => {
     return elements.searchInput.value;
