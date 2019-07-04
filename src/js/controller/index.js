@@ -8,6 +8,7 @@ import {
     clearRenderSpinnerLoader
 } from '../base'
 import * as searchView from '../views/searchView';
+import * as recipeView from '../views/recipeView';
 
 // global state of the app
 const state = {};
@@ -58,16 +59,26 @@ elements.resultPagination.addEventListener('click', e => {
 const controlRecipe =async () => {
     const id = window.location.hash.replace("#", "");
     console.log(id);
+    renderSpinnerLoader(elements.recipeDetails);
     if (id) {
         state.recipe = new Recipe(id);
         await state.recipe.getRecipe()
+
         state.recipe.parseIngredients();
         state.recipe.calcServings();
         state.recipe.calcCockingTime();
+
+        clearRenderSpinnerLoader();
+        recipeView.renderRecipe(state.recipe)
     }
 
     console.log(state.recipe);
 };
+
+
+/**
+ * Recipe View
+ */
 
 window.addEventListener("hashchange", controlRecipe);
 window.addEventListener("load", controlRecipe);
