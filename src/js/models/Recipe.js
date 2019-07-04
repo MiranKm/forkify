@@ -36,7 +36,7 @@ export default class Recipe {
     parseIngredients() {
         const unitLong = ['tablespoons', 'tablespoon', 'ounce', 'ounces', 'teaspoon', 'teaspoons', 'coupes', 'pounds'];
         const unitShort = ['tbsp', 'tbsp', 'oz', 'oz', 'tsp', 'cup', 'pound'];
-        // const units = [...unitsShort, 'kg', 'g'];
+        const units = [...unitsShort, 'kg', 'g'];
 
         const newIngredient = this.ingredients.map(element => {
             let ingredient = element.toLowerCase();
@@ -48,7 +48,7 @@ export default class Recipe {
             const arrIng = ingredient.split(' ');
 
             // find loops through an array and includes check the exisitinse of that element in th loop returns a true or false depending if it finds it or not
-            const unitIndex = arrIng.findIndex((element2) => unitShort.includes(element2));
+            const unitIndex = arrIng.findIndex((element2) => units.includes(element2));
             let objIngredient;
             let count;
 
