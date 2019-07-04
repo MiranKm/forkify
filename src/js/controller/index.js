@@ -17,7 +17,6 @@ const state = {};
  */
 const controlSearch = async () => {
     const query = searchView.getInput();
-    console.log(`you wrote ${query}`);
 
     if (query) {
         state.search = new Search(query);
@@ -42,7 +41,6 @@ elements.searchForm.addEventListener('submit', e => {
 
 elements.resultPagination.addEventListener('click', e => {
     const btn = e.target.closest(htmlTagNames.btnInline)
-    console.log(btn);
     if (btn) {
         const gotoPage = parseInt(btn.dataset.goto, 10);
         searchView.clearHtml();
@@ -57,12 +55,12 @@ elements.resultPagination.addEventListener('click', e => {
  * Recipe golobal Controller
  */
 
-
 const controlRecipe =async () => {
     const id = window.location.hash.replace("#", "");
     console.log(id);
     if (id) {
         state.recipe = new Recipe(id);
+        window.mres= state.recipe;
         await state.recipe.getRecipe()
         state.recipe.calcServings();
         state.recipe.calcCockingTime();
