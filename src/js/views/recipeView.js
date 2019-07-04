@@ -1,6 +1,6 @@
 import {
     elements,
-    htmlTagNames
+
 } from '../base';
 
 const createIngredient = ingredient => `
@@ -88,6 +88,10 @@ export const renderRecipe = () => {
     </a>
 </div>`;
 
-    elements.recipe.insertAdjustHtml('afterbegin', markup);
+    elements.recipeDetails.insertAdjustHtml('afterbegin', markup);
 
 };
+
+export const clearRecipe = () => {
+    elements.recipeDetails.innerHTML = '';
+}
