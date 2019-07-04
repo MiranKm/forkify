@@ -60,8 +60,8 @@ const controlRecipe =async () => {
     console.log(id);
     if (id) {
         state.recipe = new Recipe(id);
-        window.mres= state.recipe;
         await state.recipe.getRecipe()
+        state.recipe.parseIngredients();
         state.recipe.calcServings();
         state.recipe.calcCockingTime();
     }
