@@ -9,16 +9,16 @@ import {
 // this does this > 2.5 2 1/2
 
 const formatCount = count => {
-    if(count){
-        const [int, dec]=count.toString().split('.').map((element) => parseInt(element,10));
+    if (count) {
+        const [int, dec] = count.toString().split('.').map((element) => parseInt(element, 10));
 
-        if(!dec) return count;
-        
-        if(int ===0){
-            const fra= new Fraction(count);
+        if (!dec) return count;
+
+        if (int === 0) {
+            const fra = new Fraction(count);
             return `${fra.numerator}/${fra.denominator}`
-        }else{
-            const fra= new Fraction(count -int);
+        } else {
+            const fra = new Fraction(count - int);
             return `${int}${fra.numerator}/${fra.denominator}`
         }
     }
@@ -114,4 +114,8 @@ export const renderRecipe = (recipe) => {
 
 export const clearRecipe = () => {
     elements.recipeDetails.innerHTML = '';
+}
+
+export const highlightSelected = id => {
+    document.querySelector(`a[href=#${id}]`).classList.add('.result__link--active');
 }
