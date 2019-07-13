@@ -2,9 +2,29 @@ import {
     elements,
 
 } from '../base';
-import { Fraction } from 'fractional';
+import {
+    Fraction
+} from 'fractional';
 
+// this does this > 2.5 2 1/2
 
+const formatCount = count => {
+    if(count){
+        const [int, dec]=count.toString().split('.').map((element) => parseInt(element,10));
+
+        if(!dec) return count;
+        
+        if(int ===0){
+            const fra= new Fraction(count);
+            return `${fra.numerator}/${fra.denominator}`
+        }else{
+            const fra= new Fraction(count -int);
+            return `${int}${fra.numerator}/${fra.denominator}`
+        }
+    }
+
+    return '?';
+}
 const createIngredient = ingredient => `
         <li class="recipe__item">
             <svg class="recipe__icon">
