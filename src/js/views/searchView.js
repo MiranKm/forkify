@@ -118,3 +118,14 @@ export const renderResults = (recipes, page = 1, resPerPage = 10) => {
 
     renderPaginationButton(page, recipes.length, resPerPage);
 };
+
+
+
+export const highlightSelected = id => {
+    const resutlsArray= Array.from(document.querySelectorAll('.resutls__link'));
+
+    resutlsArray.forEach(element=>{
+        element.classList.remove(' result__link--active');
+    });
+    document.querySelector(`a[href="#${id}"]`).classList.add(' result__link--active');
+}

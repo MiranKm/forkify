@@ -115,7 +115,3 @@ export const renderRecipe = (recipe) => {
 export const clearRecipe = () => {
     elements.recipeDetails.innerHTML = '';
 }
-
-export const highlightSelected = id => {
-    document.querySelector(`a[href=#${id}]`).classList.add('.result__link--active');
-}

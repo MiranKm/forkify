@@ -56,10 +56,14 @@ elements.resultPagination.addEventListener('click', e => {
  * Recipe golobal Controller
  */
 
-const controlRecipe =async () => {
+const controlRecipe = async () => {
     const id = window.location.hash.replace("#", "");
     console.log(id);
     recipeView.clearRecipe();
+
+    if (state.search)
+        searchView.highliteSelected(id);
+
     if (id) {
         renderSpinnerLoader(elements.recipeDetails);
         state.recipe = new Recipe(id);
