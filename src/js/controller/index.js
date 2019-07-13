@@ -59,9 +59,9 @@ elements.resultPagination.addEventListener('click', e => {
 const controlRecipe =async () => {
     const id = window.location.hash.replace("#", "");
     console.log(id);
-    renderSpinnerLoader(elements.recipeDetails);
     recipeView.clearRecipe();
     if (id) {
+        renderSpinnerLoader(elements.recipeDetails);
         state.recipe = new Recipe(id);
         await state.recipe.getRecipe()
 

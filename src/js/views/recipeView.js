@@ -14,7 +14,7 @@ const createIngredient = ingredient => `
                 ${ingredient.ingredient}
             </div>
         </li>`;
-export const renderRecipe = () => {
+export const renderRecipe = (recipe) => {
     const markup = `  <figure class="recipe__fig">
     <img src="${recipe.image}" alt="${recipe.title}" class="recipe__img">
     <h1 class="recipe__title">
@@ -57,8 +57,6 @@ export const renderRecipe = () => {
     </button>
 </div>
 
-
-
 <div class="recipe__ingredients">
     <ul class="recipe__ingredient-list">
     
@@ -88,7 +86,7 @@ export const renderRecipe = () => {
     </a>
 </div>`;
 
-    elements.recipeDetails.insertAdjustHtml('afterbegin', markup);
+    elements.recipeDetails.insertAdjacentHTML('afterbegin', markup);
 
 };
 
