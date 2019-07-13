@@ -2,6 +2,8 @@ import {
     elements,
 
 } from '../base';
+import { Fraction } from 'fractional';
+
 
 const createIngredient = ingredient => `
         <li class="recipe__item">
