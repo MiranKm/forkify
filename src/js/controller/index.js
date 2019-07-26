@@ -29,7 +29,12 @@ const controlSearch = async () => {
         await state.search.getResults();
 
         clearRenderSpinnerLoader();
-        searchView.renderResults(state.search.result);
+
+        console.log(state.search.result);
+        if (state.search.result.length > 0)
+            searchView.renderResults(state.search.result);
+        else
+        searchView.doesnotExist()
 
     }
 
@@ -58,11 +63,10 @@ elements.resultPagination.addEventListener('click', e => {
 
 const controlRecipe = async () => {
     const id = window.location.hash.replace("#", "");
-    console.log(id);
     recipeView.clearRecipe();
 
     if (state.search)
-        searchView.highliteSelected(id);
+        searchView.highlightSelected(id);
 
     if (id) {
         renderSpinnerLoader(elements.recipeDetails);
@@ -77,7 +81,6 @@ const controlRecipe = async () => {
         recipeView.renderRecipe(state.recipe)
     }
 
-    console.log(state.recipe);
 };
 
 

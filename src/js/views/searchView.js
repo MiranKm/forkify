@@ -119,13 +119,25 @@ export const renderResults = (recipes, page = 1, resPerPage = 10) => {
     renderPaginationButton(page, recipes.length, resPerPage);
 };
 
+export const doesnotExist = () => {
+    const markUp=`  <li>
+    <a class="results__link" href="#">
+        <div class="results__data">
+            <h4 class="results__name">No Such Recipe</h4>
+        </div>
+    </a>
+</li>`;
+
+    elements.searchResultList.insertAdjacentHTML("afterbegin",markUp);
+};
+
 
 
 export const highlightSelected = id => {
-    const resutlsArray= Array.from(document.querySelectorAll('.resutls__link'));
+    const resutlsArray= Array.from(document.querySelectorAll('.results__link'));
 
     resutlsArray.forEach(element=>{
-        element.classList.remove(' result__link--active');
+        element.classList.remove('results__link--active');
     });
-    document.querySelector(`a[href="#${id}"]`).classList.add(' result__link--active');
+    document.querySelector(`a[href="#${id}"]`).classList.add('results__link--active');
 }
