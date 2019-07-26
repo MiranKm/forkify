@@ -58,13 +58,13 @@ export default class Recipe {
                 if (arrayCount.length === 1) {
                     count = eval(arrIng[0].replace('-', '+'));
                 } else {
-                    count=eval(arrIng.slice(0, unitIndex).join('+'));
+                    count = eval(arrIng.slice(0, unitIndex).join('+'));
                 }
 
-                objIngredient={
+                objIngredient = {
                     count,
-                    unit:arrIng[unitIndex],
-                    ingredient:arrIng.slice(unitIndex+1).join(' ')
+                    unit: arrIng[unitIndex],
+                    ingredient: arrIng.slice(unitIndex + 1).join(' ')
                 }
 
             } else if (parseInt(arrIng[0], 10)) {
@@ -89,5 +89,15 @@ export default class Recipe {
         this.ingredients = newIngredient;
     }
 
+
+    updateServings(type) {
+        const newServings = type == 'dec' ? this.servings - 1 : this.servings + 1;
+
+        this.servings = newServings;
+        this.ingredients.forEach((el) => {
+            el.count *= (newServings / this.servings);
+            // el.count = el.count * (newServings / this.servings);
+        });
+    }
 
 }
