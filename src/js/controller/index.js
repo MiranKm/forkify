@@ -34,7 +34,7 @@ const controlSearch = async () => {
         if (state.search.result.length > 0)
             searchView.renderResults(state.search.result);
         else
-        searchView.doesnotExist()
+            searchView.doesnotExist()
 
     }
 
@@ -90,3 +90,12 @@ const controlRecipe = async () => {
 
 window.addEventListener("hashchange", controlRecipe);
 window.addEventListener("load", controlRecipe);
+
+elements.recipeDetails.addEventListener('click', e => {
+    if (e.target.matches('.btn-decrease, .btn-decrease * ')) {
+        state.recipe.updateServings('dec');
+    } else if (e.target.matches('.btn-increase, .btn-increase * ')) {
+        state.recipe.updateServings('inc');
+    }
+    console.log(state.recipe);
+});
