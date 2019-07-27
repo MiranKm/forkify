@@ -1,6 +1,7 @@
 // Global app controller
 import Search from '../models/Search';
 import Recipe from '../models/Recipe';
+import List from '../models/List';
 import {
     elements,
     htmlTagNames,
@@ -101,5 +102,10 @@ elements.recipeDetails.addEventListener('click', e => {
         state.recipe.updateServings('inc');
         recipeView.updateServings(state.recipe)
     }
-    console.log(state.recipe);
 });
+
+
+
+
+
+window.l= new List();
