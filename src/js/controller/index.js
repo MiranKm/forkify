@@ -108,6 +108,9 @@ elements.shoppingList.addEventListener('click', (e) => {
     if (e.target.matches('.shopping__delete, .shopping__delete * ')) {
         state.list.deleteItem(id);
         list.listView.deleteItem(id);
+    } else if (e.target.matches('.shopping__count-value')) {
+        const value = parseFloat(e.target.value);
+        state.list.updateCount(id, value);
     }
 });
 
