@@ -7,6 +7,7 @@ export const htmlTagNames = {
     resultPagination:'.results__pages',
     btnInline:'.btn-inline',
     recipeDetails:'.recipe',
+    shoppingList:'.shopping__list',
 
 
 };
@@ -24,6 +25,7 @@ export const elements = {
     searchResultList: document.querySelector(htmlTagNames.searchResultList),
     searchResults: document.querySelector(htmlTagNames.searchResult),
     resultPagination:document.querySelector(htmlTagNames.resultPagination),
+    shoppingList:document.querySelector(htmlTagNames.shoppingList),
     recipeDetails:document.querySelector(htmlTagNames.recipeDetails)
 };
 
