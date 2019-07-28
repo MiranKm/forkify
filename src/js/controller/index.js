@@ -96,12 +96,20 @@ window.addEventListener("load", controlRecipe);
 
 const controlList = () => {
     if (!state.list) state.list = new List();
-
     state.recipe.ingredients.forEach(element => {
         const item = state.list.addItem(element.count, element.unit, element.ingredient);
         listView.renderItem(item);
     });
 }
+elements.shoppingList.addEventListener('click', (e) => {
+    const id = e.target.closest('.shopping__item').dataset.itemid;
+    console.log(id);
+
+    if (e.target.matches('.shopping__delete, .shopping__delete * ')) {
+        state.list.deleteItem(id);
+        list.listView.deleteItem(id);
+    }
+});
 
 
 
