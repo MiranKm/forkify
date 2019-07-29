@@ -11,6 +11,7 @@ import {
 import * as searchView from '../views/searchView';
 import * as recipeView from '../views/recipeView';
 import * as listView from '../views/listView';
+import Like from '../models/Like';
 
 // global state of the app
 const state = {};
@@ -115,6 +116,21 @@ elements.shoppingList.addEventListener('click', (e) => {
 });
 
 
+const controlLike = () => {
+    if (!state.like) state.like = new Like();
+    const currentId = state.recipe.id;
+    if (!state.like.isLiked(currentId)) {
+        const newLik = state.like.addLike(currentId,
+            state.recipe.title,
+            state.recipe.author,
+            state.recipe.image);
+
+    } else {
+        state.like.deleteLike(currentId);
+    }
+    console.log(state.like);
+};
+
 
 
 elements.recipeDetails.addEventListener('click', e => {
@@ -128,6 +144,7 @@ elements.recipeDetails.addEventListener('click', e => {
         recipeView.updateServings(state.recipe)
     } else if (e.target.matches('.recipe__btn--add, .recipe__btn--add * ')) {
         controlList();
+    } else if (e.target.matches('.recipe__love, .recipe__love * ')) {
+        controlLike();
     }
 });
-
