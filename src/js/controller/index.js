@@ -11,6 +11,7 @@ import {
 import * as searchView from '../views/searchView';
 import * as recipeView from '../views/recipeView';
 import * as listView from '../views/listView';
+import * as likeView from '../views/likeView';
 import Like from '../models/Like';
 
 // global state of the app
@@ -81,7 +82,7 @@ const controlRecipe = async () => {
         state.recipe.calcCockingTime();
 
         clearRenderSpinnerLoader();
-        recipeView.renderRecipe(state.recipe)
+        recipeView.renderRecipe(state.recipe, state.like.isLiked(id))
     }
 
 };
@@ -94,7 +95,7 @@ const controlRecipe = async () => {
 window.addEventListener("hashchange", controlRecipe);
 window.addEventListener("load", controlRecipe);
 
-
+state.list = new List();
 const controlList = () => {
     if (!state.list) state.list = new List();
     state.recipe.ingredients.forEach(element => {
@@ -124,9 +125,12 @@ const controlLike = () => {
             state.recipe.title,
             state.recipe.author,
             state.recipe.image);
+        likeView.likeBtnnToggle(true)
 
     } else {
         state.like.deleteLike(currentId);
+        likeView.likeBtnnToggle(false)
+
     }
     console.log(state.like);
 };
