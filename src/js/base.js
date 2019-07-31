@@ -8,6 +8,7 @@ export const htmlTagNames = {
     btnInline:'.btn-inline',
     recipeDetails:'.recipe',
     shoppingList:'.shopping__list',
+    likesField:'.likes__field',
 
 
 };
@@ -26,6 +27,7 @@ export const elements = {
     searchResults: document.querySelector(htmlTagNames.searchResult),
     resultPagination:document.querySelector(htmlTagNames.resultPagination),
     shoppingList:document.querySelector(htmlTagNames.shoppingList),
+    likesField:document.querySelector(htmlTagNames.likesField),
     recipeDetails:document.querySelector(htmlTagNames.recipeDetails)
 };
 

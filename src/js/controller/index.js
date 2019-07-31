@@ -96,6 +96,8 @@ window.addEventListener("hashchange", controlRecipe);
 window.addEventListener("load", controlRecipe);
 
 state.list = new List();
+likeView.toggleLikeView(state.like.getNumberLikes())
+
 const controlList = () => {
     if (!state.list) state.list = new List();
     state.recipe.ingredients.forEach(element => {
@@ -118,6 +120,7 @@ elements.shoppingList.addEventListener('click', (e) => {
 
 
 const controlLike = () => {
+
     if (!state.like) state.like = new Like();
     const currentId = state.recipe.id;
     if (!state.like.isLiked(currentId)) {
@@ -132,6 +135,8 @@ const controlLike = () => {
         likeView.likeBtnnToggle(false)
 
     }
+
+    likeView.toggleLikeView(state.like.getNumberLikes())
     console.log(state.like);
 };
 
