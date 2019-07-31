@@ -9,6 +9,7 @@ export const htmlTagNames = {
     recipeDetails:'.recipe',
     shoppingList:'.shopping__list',
     likesField:'.likes__field',
+    likesList:'.likes__list',
 
 
 };
@@ -28,6 +29,7 @@ export const elements = {
     resultPagination:document.querySelector(htmlTagNames.resultPagination),
     shoppingList:document.querySelector(htmlTagNames.shoppingList),
     likesField:document.querySelector(htmlTagNames.likesField),
+    likesList:document.querySelector(htmlTagNames.likesList),
     recipeDetails:document.querySelector(htmlTagNames.recipeDetails)
 };
 

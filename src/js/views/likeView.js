@@ -13,3 +13,19 @@ export const likeBtnnToggle = isLiked => {
 export const toggleLikeView = numberOfLikes => {
     elements.likesField.getElementsByClassName.visibility = numberOfLikes > 0 ? 'visible' : 'hidden';
 };
+
+export const renderLikes = like => {
+    markUp = ` <li>
+    <a class="likes__link" href="#${like.link}">
+        <figure class="likes__fig">
+            <img src="${like.image}" alt="${like.title}">
+        </figure>
+        <div class="likes__data">
+            <h4 class="likes__name">${like.title}</h4>
+            <p class="likes__author">${like.author}</p>
+        </div>
+    </a>
+</li>`;
+
+    elements.likesList.insertAdjacentHTML('beforeend', markUp);
+};
