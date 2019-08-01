@@ -12,6 +12,8 @@ export default class Like {
             image
         };
         this.like.push(item);
+
+        this.presistData();
         return item;
     }
 
@@ -19,6 +21,8 @@ export default class Like {
     deleteLike(id) {
         const index = this.like.findIndex(el => el.id === id);
         this.like.splice(index, 1);
+        this.presistData();
+
     }
 
 
@@ -28,5 +32,10 @@ export default class Like {
 
     getNumberLikes() {
         return this.like.length;
+    }
+
+
+    presistData() {
+        localStorage.setItem("likes", JSON.stringify(this.like));
     }
 }

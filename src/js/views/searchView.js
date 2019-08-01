@@ -11,7 +11,7 @@ export const clearInput = () => {
     elements.searchInput.value = "";
 };
 
-const limitRecipeTitle = (title, limit = 17) => {
+export const limitRecipeTitle = (title, limit = 17) => {
     const titleHolder = [];
     if (title.length > limit) {
         title.split(' ').reduce((acc, currrent) => {
@@ -127,7 +127,6 @@ export const doesnotExist = () => {
         </div>
     </a>
 </li>`;
-
     elements.searchResultList.insertAdjacentHTML("afterbegin",markUp);
 };
 
@@ -139,5 +138,5 @@ export const highlightSelected = id => {
     resutlsArray.forEach(element=>{
         element.classList.remove('results__link--active');
     });
-    document.querySelector(`a[href="#${id}"]`).classList.add('results__link--active');
+    document.querySelector(`.results__link[href*="#${id}"]`).classList.add('results__link--active');
 }

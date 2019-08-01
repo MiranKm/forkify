@@ -129,11 +129,11 @@ const controlLike = () => {
             state.recipe.author,
             state.recipe.image);
         likeView.likeBtnnToggle(true)
-
+        likeView.renderLikes(newLik);
     } else {
         state.like.deleteLike(currentId);
         likeView.likeBtnnToggle(false)
-
+        likeView.deleteLike(currentId);
     }
 
     likeView.toggleLikeView(state.like.getNumberLikes())
@@ -157,3 +157,17 @@ elements.recipeDetails.addEventListener('click', e => {
         controlLike();
     }
 });
+
+
+const objectToSave = {
+    "name": "Ahmed",
+    "age": 100,
+    "email": "Ahmed@gmail.com",
+    "password": "##$$%%00112233"
+}
+
+const objectToJsonToSave = JSON.stringify(objectToSave);
+
+localStorage.setItem("item1", "yes");
+localStorage.setItem("item0", "anotherOne");
+localStorage.setItem("customObj", objectToJsonToSave);
