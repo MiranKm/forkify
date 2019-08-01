@@ -38,4 +38,10 @@ export default class Like {
     presistData() {
         localStorage.setItem("likes", JSON.stringify(this.like));
     }
+
+
+    readStorage() {
+        const storageData = JSON.parse(localStorage.getItem("likes"))
+        if (storageData) this.like = storageData;
+    }
 }
