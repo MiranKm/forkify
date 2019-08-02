@@ -9,16 +9,17 @@ import {
 // this does this > 2.5 2 1/2
 
 const formatCount = count => {
+    const newCount = Math.round(count * 10000) / 10000
     if (count) {
-        const [int, dec] = count.toString().split('.').map((element) => parseInt(element, 10));
+        const [int, dec] = newCount.toString().split('.').map((element) => parseInt(element, 10));
 
-        if (!dec) return count;
+        if (!dec) return newCount;
 
         if (int === 0) {
-            const fra = new Fraction(count);
+            const fra = new Fraction(newCount);
             return `${fra.numerator}/${fra.denominator}`
         } else {
-            const fra = new Fraction(count - int);
+            const fra = new Fraction(newCount - int);
             return `${int}${fra.numerator}/${fra.denominator}`
         }
     }

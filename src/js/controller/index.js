@@ -34,7 +34,6 @@ const controlSearch = async () => {
 
         clearRenderSpinnerLoader();
 
-        console.log(state.search.result);
         if (state.search.result.length > 0)
             searchView.renderResults(state.search.result);
         else
@@ -56,7 +55,6 @@ elements.resultPagination.addEventListener('click', e => {
         searchView.clearHtml();
 
         searchView.renderResults(state.search.result, gotoPage);
-        console.log(gotoPage);
     }
 });
 
@@ -95,9 +93,6 @@ const controlRecipe = async () => {
 window.addEventListener("hashchange", controlRecipe);
 window.addEventListener("load", controlRecipe);
 
-state.list = new List();
-likeView.toggleLikeView(state.like.getNumberLikes())
-
 const controlList = () => {
     if (!state.list) state.list = new List();
     state.recipe.ingredients.forEach(element => {
@@ -107,7 +102,6 @@ const controlList = () => {
 }
 elements.shoppingList.addEventListener('click', (e) => {
     const id = e.target.closest('.shopping__item').dataset.itemid;
-    console.log(id);
 
     if (e.target.matches('.shopping__delete, .shopping__delete * ')) {
         state.list.deleteItem(id);
@@ -137,7 +131,6 @@ const controlLike = () => {
     }
 
     likeView.toggleLikeView(state.like.getNumberLikes())
-    console.log(state.like);
 };
 
 
@@ -158,16 +151,11 @@ elements.recipeDetails.addEventListener('click', e => {
     }
 });
 
-
-const objectToSave = {
-    "name": "Ahmed",
-    "age": 100,
-    "email": "Ahmed@gmail.com",
-    "password": "##$$%%00112233"
-}
-
-const objectToJsonToSave = JSON.stringify(objectToSave);
-
-localStorage.setItem("item1", "yes");
-localStorage.setItem("item0", "anotherOne");
-localStorage.setItem("customObj", objectToJsonToSave);
+window.addEventListener("load", (e) => {
+    state.like = new List();
+    state.like.readStorage();
+    likeView.toggleLikeView(state.like.getNumberLikes())
+    state.like.like.forEach(like=>{
+        likeView.renderLikes(like)
+    });
+});
